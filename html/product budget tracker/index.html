@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Budget Tracker</title>
+</head>
+<body>
+
+    <header align="center">
+        <h1>Personal Budget Tracker</h1>
+        <div>
+            <a href="#home">Home</a><br>
+            <a href="#add_transaction">Add Income/Expense</a><br>
+        </div>
+    </header><br>
+
+    <section id="home" align="center">
+        <h2>Welcome to Personal Budget Tracker</h2>
+        <p>You can add new entries and view a detailed summary of your budget.</p>
+    </section><br>
+
+    <section id="add_transaction" align="center">
+        <h2>Add Income/Expense</h2>
+        <form action="#summary" method="get">
+            <label for="type"><b>Transaction Type:</b></label>
+            <input type="radio" name="type" value="income">
+            <label for="income">Income</label>
+            <input type="radio" name="type" value="expense">
+            <label for="expense">Expense</label><br><br>
+
+            <label for="amount"><b>Amount (₹):</b></label>
+            <input type="number" name="amount" required><br><br>
+
+            <label for="category"><b>Category:</b></label>
+            <select name="category">
+                <option>Food</option>
+                <option>Transportation</option>
+                <option>Entertainment</option>
+                <option>Bills</option>
+                <option>Other</option>
+            </select><br><br>
+
+            <label for="date"><b>Date:</b></label>
+            <input type="date" name="date" required><br><br>
+
+            <input type="submit" value="Add Transaction">
+        </form>
+    </section><br>
+
+    <section id="summary" align="center">
+        <h2>Budget Summary</h2>
+        <table border="2" align="center" cellpadding="5">
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Amount (₹)</th>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Food</td>
+                    <td>500</td>
+                    <td>2025-01-10</td>
+                    <td>Expense</td>
+                    <td><button>Edit</button> <button>Delete</button></td>
+                </tr>
+                <tr>
+                    <td>Salary</td>
+                    <td>50,000</td>
+                    <td>2025-01-04</td>
+                    <td>Income</td>
+                    <td><button>Edit</button> <button>Delete</button></td>
+                </tr>
+                <tr>
+                    <td>Transport</td>
+                    <td>200</td>
+                    <td>2025-01-01</td>
+                    <td>Expense</td>
+                    <td><button>Edit</button> <button>Delete</button></td>
+                </tr>
+                <tr>
+                    <td>Rent</td>
+                    <td>15,000</td>
+                    <td>2025-01-05</td>
+                    <td>Expense</td>
+                    <td><button>Edit</button> <button>Delete</button></td>
+                </tr>
+                <tr>
+                    <td>Entertainment</td>
+                    <td>2,000</td>
+                    <td>2025-01-08</td>
+                    <td>Expense</td>
+                    <td><button>Edit</button> <button>Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </section><br>
+
+    <footer>
+        <section id="terms_of_use" align="center">
+            <a href="#terms_of_use">Terms of Use</a><br>
+            <p>By using this Personal Budget Tracker, you agree that it is for personal use only.</p>
+        </section><br>
+    </footer>
+
+</body>
+</html>

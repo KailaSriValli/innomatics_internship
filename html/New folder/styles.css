@@ -1,0 +1,179 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+body {
+    background-color: #f8f1e5;
+    color: #333;
+}
+.navbar {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #3e2723;
+    padding: 0 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+.navbar .logo h2 {
+    color: #ffcc80;
+    font-size: 36px;
+}
+.navbar .navlist ul {
+    display: flex;
+    list-style: none;
+}
+.navbar .navlist ul li {
+    margin: 0 15px;
+}
+.navbar .navlist ul li a {
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+}
+.navbar .navlist ul li a:hover {
+    color: #ff9800;
+}
+.header {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.4) 50%), 
+                url('https://th.bing.com/th/id/OIP.9yqNBFDpN_dSzQB2iG0YpgHaEo?w=268&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+.content h1 {
+    font-size: 70px;
+    color: #ffcc80;
+}
+.content p {
+    width: 50%;
+    margin: 20px auto;
+    font-size: 18px;
+    color: #fff;
+}
+.btn {
+    padding: 12px 26px;
+    font-size: 20px;
+    background-color: #ff9800;
+    color: white;
+    border: none;
+}
+.menu {
+    margin-top: 100px;
+    text-align: center;
+    padding: 50px;
+}
+.menu h2 {
+    font-size: 40px;
+    color: #3e2723;
+    margin-bottom: 30px;
+}
+.menu-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.coffee-item-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.coffee-item {
+    text-align: center;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+}
+.coffee-item img {
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
+}
+.coffee-item p {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #3e2723;
+}
+.price {
+    font-size: 16px;
+    color: #ff9800;
+}
+.about {
+    text-align: center;
+    padding: 50px;
+    background-color: #fff3e0;
+}
+.about h2 {
+    font-size: 40px;
+    color: #3e2723;
+    margin-bottom: 20px;
+}
+.about p {
+    font-size: 18px;
+    width: 60%;
+    margin: 0 auto;
+    color: #5d4037;
+}
+.contact {
+    text-align: center;
+    padding: 50px;
+    background-color: #3e2723;
+    color: white;
+}
+.contact h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+.contact p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+.contact form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+.contact input, .contact textarea {
+    padding: 10px;
+    font-size: 16px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.contact button {
+    padding: 12px 26px;
+    background-color: #ff9800;
+    color: white;
+    font-size: 18px;
+    border: none;
+}
+.footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #3e2723;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
