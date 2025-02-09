@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Ticket Pricing</title>
+</head>
+<body>
+  <h1>Movie Ticket Pricing</h1>
+  <label for="age">Age:</label>
+  <input type="number" id="age"><br><br>
+  <label for="showTime">Show Time (24hrs format):</label>
+  <input type="number" id="showTime"><br><br>
+  <button onclick="calculatePrice()">Calculate Ticket Price</button>
+  <p id="result"></p>
+  <script>
+    function calculateTicketPrice(age, showTime) {
+      let standardPrice = 12;
+      let finalPrice = standardPrice;
+      let discountDetails = ""; 
+      if (showTime < 17) {
+        finalPrice = standardPrice * 0.8; // 20% discount for matinee
+        discountDetails += "Matinee Discount (20%): $" + (standardPrice * 0.2).toFixed(2) + "<br>";
+      }
+      let ageDiscount = 0; 
+      if (age > 60) {
+        ageDiscount = finalPrice * 0.3; // 30% discount for senior citizens
+        finalPrice = finalPrice * 0.7;
+        discountDetails += "Senior Citizen Discount (30%): $" + ageDiscount.toFixed(2) + "<br>";
+      } else if (age < 12) {
+        ageDiscount = finalPrice * 0.4; // 40% discount for children
+        finalPrice = finalPrice * 0.6;
+        discountDetails += "Child Discount (40%): $" + ageDiscount.toFixed(2) + "<br>";
+      }
+      return {
+        finalPrice: finalPrice.toFixed(2),
+        discountDetails: discountDetails
+      };
+    }
+    function calculatePrice() {
+      let age = parseInt(document.getElementById("age").value);
+      let showTime = parseInt(document.getElementById("showTime").value);
+      if (isNaN(age) || isNaN(showTime) || age < 0 || showTime < 0 || showTime > 23) {
+        document.getElementById("result").textContent = "Please enter valid age and show time.";
+        return;
+      }
+      let priceInfo = calculateTicketPrice(age, showTime);
+      let resultText = "";
+      if (priceInfo.discountDetails !== "") {
+        resultText = priceInfo.discountDetails + "Price after discounts: $" + priceInfo.finalPrice;
+      } else {
+        resultText = "Final Price: $" + priceInfo.finalPrice;
+      }
+      document.getElementById("result").innerHTML = resultText;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application</title>
+</head>
+<body>
+    <h1>Job Application</h1>
+    <label for="age">Age:</label>
+    <input type="number" id="age" min="0"><br><br>
+    <label for="experience">Experience:</label>
+    <input type="number" id="experience" min="0"><br><br>
+    <label for="qualification">Qualification:</label>
+    <input type="text" id="qualification"><br><br>
+    <button onclick="checkEligibility()">Check</button>
+    <p id="result"></p>
+    <script>
+        function isEligible(age, experience, qualification) {
+            if (age >= 21 && age <= 55 && experience >= 2 && qualification === "Bachelor's Degree") {
+                return true; 
+            } else {
+                return false; 
+            }
+        }
+        function checkEligibility() {
+            let age = parseInt(document.getElementById("age").value);
+            let experience = parseInt(document.getElementById("experience").value);
+            let qualification = document.getElementById("qualification").value;
+            if (isNaN(age) || isNaN(experience) || age < 0 || experience < 0) {
+                document.getElementById("result").textContent = "Please enter valid details";
+                return;
+            }
+            let eligible = isEligible(age, experience, qualification);
+            if (eligible) {
+                document.getElementById("result").textContent = "Eligible";
+            } else {
+                document.getElementById("result").textContent = "Not Eligible.";
+            }
+        }
+    </script>
+</body>
+</html>

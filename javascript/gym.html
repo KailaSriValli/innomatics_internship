@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Membership Plan</title>
+</head>
+<body>
+    <h1>Fitness Membership Plan</h1>
+    <label for="planType">Plan Type:</label>
+    <select id="planType" name="planType" autofocus>
+        <option value="basic">Basic</option>
+        <option value="premium">Premium</option>
+        <option value="vip">VIP</option>
+    </select><br><br>
+    <label for="trainer">Want Personal Trainer?</label>
+    <input type="checkbox" id="trainer">
+    <label for="diet">Want Diet Plan?</label>
+    <input type="checkbox" id="diet"><br><br>
+    <button onclick="suggestPlan()">Suggest Plan</button>
+    <p id="result"></p>
+    <script>
+        function choosePlan(planType, wantsTrainer, wantsDietPlan) {
+            if (planType === "vip" || (planType === "premium" && wantsTrainer) || (planType === "basic" && !wantsTrainer && !wantsDietPlan)) {
+                return planType;
+            } else if (wantsTrainer && wantsDietPlan) {
+                return "vip";
+            } else if (wantsTrainer) {
+                return "premium";
+            } else if (wantsDietPlan) {
+                return "vip";
+            } else {
+                return "basic";
+            }
+        }
+        function suggestPlan() {
+            const planType = document.getElementById("planType").value;
+            const wantsTrainer = document.getElementById("trainer").checked;
+            const wantsDietPlan = document.getElementById("diet").checked;
+            const suggestedPlan = choosePlan(planType, wantsTrainer, wantsDietPlan);
+            let message = "";
+            if (suggestedPlan === "basic") {
+                message = "Basic ($20/month) - Gym Access";
+            } else if (suggestedPlan === "premium") {
+                message = "Premium ($50/month) - Gym + Personal Trainer";
+            } else if (suggestedPlan === "vip") {
+                message = "VIP ($80/month) - Gym + Trainer + Diet Plan";
+            }
+            document.getElementById("result").textContent = message;
+        }
+    </script>
+</body>
+</html>

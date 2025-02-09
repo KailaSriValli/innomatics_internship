@@ -4,75 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ATM Withdrawal System</title>
-    <style>
-        body {
-            padding: 20px;
-        }
-        .container {
-            background-color: #fff;
-            padding: 20px;
-            width: 300px;
-            margin: 0 auto;
-        }
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            }
-        .res {
-            margin-top: 20px;
-            font-weight: bold;
-            text-align: center;
-        }
-    </style>
 </head>
 <body>
-
-<div class="container">
-    <h2>ATM Withdrawal</h2>
-    <label >Balance:</label>
-    <input type="number" id="balance" placeholder="Enter balance" />
-    <label>Amount to Withdraw:</label>
-    <input type="number" id="amount" placeholder="Enter amount" />
-    <label>PIN:</label>
-    <input type="password" id="pin" placeholder="Enter PIN" />
-    <label>ReEnter PIN:</label>
-    <input type="password" id="enteredPin" placeholder="Enter your PIN" />
-    <button onclick="processATMWithdrawal()">Withdraw</button>
-    <div class="res" id="res"></div>
-</div>
-<script>
-    function atmWithdrawal(balance, amount, pin, enteredPin) {
-        if (enteredPin !== pin) {
-            return "Incorrect PIN";
+    <div class="container">
+        <h2>ATM Withdrawal</h2>
+        <label for="balance">Balance:</label>
+        <input type="number" id="balance" placeholder="Enter balance"><br>
+        <br>
+        <label for="amount">Amount to Withdraw:</label>
+        <input type="number" id="amount" placeholder="Enter amount"><br>
+        <br>
+        <label for="pin">PIN:</label>
+        <input type="password" id="pin" placeholder="Enter PIN"><br>
+        <br>
+        <label for="enteredPin">Re-enter PIN:</label>
+        <input type="password" id="enteredPin" placeholder="Enter your PIN"><br>
+        <button onclick="processATMWithdrawal()">Withdraw</button>
+        <div id="result"></div>
+    </div>
+    <script>
+        function atmWithdrawal(balance, amount, pin, enteredPin) {
+            if (enteredPin !== pin) {
+                return "Incorrect PIN.";
+            }
+            if (amount > balance) {
+                return "Insufficient balance.";
+            }
+            if (amount % 100 !== 0) {
+                return "Enter amount in multiples of 100.";
+            }
+            return `Withdrawal successful. Your new balance is $${balance - amount}.`;
         }
-        if (amount > balance) {
-            return "Insufficient Amt";
+        function processATMWithdrawal() {
+            const balance = parseFloat(document.getElementById("balance").value);
+            const amount = parseFloat(document.getElementById("amount").value);
+            const pin = parseInt(document.getElementById("pin").value);
+            const enteredPin = parseInt(document.getElementById("enteredPin").value);
+            const result = atmWithdrawal(balance, amount, pin, enteredPin);
+            document.getElementById("result").innerText = result;
         }
-        if (amount % 100 !== 0) {
-            return "Enter amount in multiples of 100";
-        }
-        return `Your Withdrawal successful. Your new balance is $${balance - amount}`;
-    }
-
-    function processATMWithdrawal() {
-        const balance = parseFloat(document.getElementById("balance").value);
-        const amount = parseFloat(document.getElementById("amount").value);
-        const pin = parseInt(document.getElementById("pin").value);
-        const enteredPin = parseInt(document.getElementById("enteredPin").value);
-        const res = atmWithdrawal(balance, amount, pin, enteredPin);
-        document.getElementById("result").innerText = res;
-    }
-</script>
+    </script>
 </body>
 </html>

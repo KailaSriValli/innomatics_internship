@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Ticket Booking</title>
+</head>
+<body>
+    <h1>Flight Ticket Booking</h1>
+    <label for="classType">Class:</label>
+    <select id="classType">
+        <option value="economy">Economy</option>
+        <option value="business">Business</option>
+        <option value="first">First</option>
+    </select><br><br>
+    <label for="luggage">Luggage Weight (kg):</label>
+    <input type="number" id="luggage" min="0"><br><br>
+    <label for="student">Student:</label>
+    <input type="checkbox" id="student"><br><br>
+    <label for="senior">Senior (60+):</label>
+    <input type="checkbox" id="senior"><br><br>
+    <button onclick="calculateFare()">Calculate Fare</button>
+    <p id="result"></p>
+    <script>
+        function calculateFlightFare(classType, luggageWeight, isStudent, isSenior) {
+            let baseFare = 300;
+            let finalFare = baseFare;
+            if (classType === "business") {
+                finalFare += 200;
+            } else if (classType === "first") {
+                finalFare += 500;
+            }
+            if (luggageWeight > 20) {
+                const extraLuggage = Math.ceil((luggageWeight - 20) / 10);
+                finalFare += extraLuggage * 50;
+            }
+            if (isStudent) {
+                finalFare *= 0.85;
+            } else if (isSenior) {
+                finalFare *= 0.9;
+            }
+            return finalFare.toFixed(2);
+        }
+        function calculateFare() {
+            const classType = document.getElementById("classType").value;
+            const luggageWeight = parseFloat(document.getElementById("luggage").value);
+            const isStudent = document.getElementById("student").checked;
+            const isSenior = document.getElementById("senior").checked;
+            if (isNaN(luggageWeight) || luggageWeight < 0) {
+                document.getElementById("result").textContent = "Please enter valid luggage weight.";
+                return;
+            }
+            const fare = calculateFlightFare(classType, luggageWeight, isStudent, isSenior);
+            document.getElementById("result").textContent = "Final Fare: $" + fare;
+        }
+    </script>
+</body>
+</html>

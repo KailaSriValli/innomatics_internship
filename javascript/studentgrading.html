@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Grade Calculator</title>
+</head>
+<body>
+  <h1>Student Grade Calculator</h1>
+  <label for="marks">Marks:</label>
+  <input type="number" id="marks" name="marks"><br><br>
+  <label for="attendance">Attendance (%):</label>
+  <input type="number" id="attendance" name="attendance"><br><br>
+  <button onclick="calculateGrade()">Calculate Grade</button>
+  <p id="gradeResult"></p>
+  <p id="extraDetails"></p>
+  <p id="finalMarks"></p>
+  <script>
+    function calculateGrade() {
+      const marks = parseFloat(document.getElementById("marks").value);
+      const attendance = parseFloat(document.getElementById("attendance").value);
+      if (isNaN(marks) || marks < 0 || isNaN(attendance) || attendance < 0 || attendance > 100) {
+        alert("Please enter valid marks (0 or greater) and attendance (0-100).");
+        return;
+      }
+      let totalMarks = marks;
+      let extraMarks = 0;
+      let extraText = "";
+      let finalText = "";
+      if (attendance >= 90) {
+        extraMarks = 5;
+        totalMarks += extraMarks;
+        extraText = "Extra Marks: +5";
+      } else {
+        extraText = "No Extra Marks";
+      }
+      finalText = "Total Marks: " + totalMarks;
+      let grade;
+      if (totalMarks >= 90) {
+        grade = "A";
+      } else if (totalMarks >= 80) {
+        grade = "B";
+      } else if (totalMarks >= 70) {
+        grade = "C";
+      } else if (totalMarks >= 60) {
+        grade = "D";
+      } else {
+        grade = "F";
+      }
+      document.getElementById("gradeResult").textContent = "Grade: " + grade;
+      document.getElementById("extraDetails").textContent = extraText;
+      document.getElementById("finalMarks").textContent = finalText;
+    }
+  </script>
+</body>
+</html>

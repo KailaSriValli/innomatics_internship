@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Coupon Redemption</title>
+</head>
+<body>
+  <h1>Coupon Redemption</h1>
+
+  <label for="orderAmount">Order Amount:</label>
+  <input type="number" id="orderAmount"><br><br>
+  <label for="couponCode">Coupon Code:</label>
+  <input type="text" id="couponCode"><br><br>
+  <button onclick="applyCoupon()">Apply Coupon</button>
+  <p id="result"></p>
+  <script>
+    function calculateFinalPrice(orderAmount, couponCode) {
+      let finalAmount = orderAmount;
+      if (couponCode === "DISCOUNT10" && orderAmount > 500) {
+        finalAmount = orderAmount * 0.9; // 10% discount
+      } else if (couponCode === "FREESHIP" && orderAmount > 200) {
+      }
+      return finalAmount.toFixed(2);
+    }
+    function applyCoupon() {
+      const orderAmount = parseFloat(document.getElementById("orderAmount").value);
+      const couponCode = document.getElementById("couponCode").value;
+      if (isNaN(orderAmount) || orderAmount <= 0) {
+        document.getElementById("result").textContent = "Please enter a valid order amount.";
+        return;
+      }
+      const finalPrice = calculateFinalPrice(orderAmount, couponCode);
+      let message = `Final Price: $${finalPrice}`;
+      if (couponCode === "FREESHIP" && orderAmount > 200) {
+        message += " (Free Shipping Applied)";
+      }
+      document.getElementById("result").textContent = message;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Shopping Calculator</title>
+</head>
+<body>
+  <h1>Online Shopping Calculator</h1>
+
+  <label for="orderAmount">Order Amount:</label>
+  <input type="number" id="orderAmount" name="orderAmount"><br><br>
+
+  <button onclick="calculate()">Calculate</button>
+
+  <p id="result"></p>
+  <p id="discountDetails"></p>
+  <p id="shippingDetails"></p>
+
+  <script>
+    function calculate() {
+      const orderAmount = parseFloat(document.getElementById("orderAmount").value);
+
+      if (isNaN(orderAmount) || orderAmount < 0) {
+        alert("Please enter a valid order amount.");
+        return;
+      }
+
+      let discount = 0;
+      let discountAmount = 0;
+      let shippingCost = 0;
+      let discountDetails = "";
+      let shippingDetails = "";
+
+      if (orderAmount > 1000) {
+        discount = 0.20;
+        discountAmount = orderAmount * discount;
+        discountDetails = "With 20% discount (-$" + discountAmount.toFixed(2) + ")";
+      } else if (orderAmount >= 500) {
+        discount = 0.10;
+        discountAmount = orderAmount * discount;
+        discountDetails = "With 10% discount (-$" + discountAmount.toFixed(2) + ")";
+      } else {
+        discountDetails = "No discount applied.";
+      }
+
+      let discountedAmount = orderAmount * (1 - discount);
+
+      if (orderAmount < 50) {
+        shippingCost = 10;
+        shippingDetails = "Express Shipping (+$" + shippingCost.toFixed(2) + ")";
+      } else {
+        shippingCost = 0;
+        shippingDetails = "Free Shipping";
+      }
+
+      let finalAmount = discountedAmount + shippingCost;
+
+      document.getElementById("result").textContent = "Final Amount: $" + finalAmount.toFixed(2);
+      document.getElementById("discountDetails").textContent = discountDetails;
+      document.getElementById("shippingDetails").textContent = shippingDetails;
+    }
+  </script>
+</body>
+</html>
