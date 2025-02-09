@@ -16,7 +16,7 @@
   <button onclick="controlTrafficLight()">Check Time</button>
   <p id="result"></p>
   <script>
-    function trafficLight(density) {
+    function trafficLightControl(density) {
       if (density === "heavy") {
         return 60;
       } else if (density === "moderate") {
@@ -29,7 +29,7 @@
     }
     function controlTrafficLight() {
       let density = document.getElementById("trafficDensity").value;
-      let greenTime = trafficLight(density);
+      let greenTime = trafficLightControl(density);
       document.getElementById("result").textContent = "Green light will be on for " + greenTime + " seconds.";
     }
   </script>
