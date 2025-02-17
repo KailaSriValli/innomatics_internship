@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h2>Memory Game</h2>
+        <nav>
+            <a href="#" onclick="location.reload()">Home</a>
+            <a href="#games">Games</a>
+            <a href="#aboutus">About Us</a>
+            <a href="#contactus">Contact Us</a>
+        </nav>
+    </header>
+    <section id="home">
+        <h1>Welcome to Memory Game</h1>
+        <div id="about">
+            <h2>About Us</h2>
+            <p>We are passionate developers creating fun and interactive games to boost memory and concentration skills.</p>
+        </div><br><br>
+        <div id="contact">
+            <h2>Contact Us</h2>
+            <p>Email: support@memorygame.com</p>
+            <p>Phone: +123 456 7890</p>
+        </div>
+    </section>
+    <section id="games">
+        <h2>Choose Your Game</h2>
+        <p>Select a theme and start playing:</p>
+        <div class="themes" id="theme-selection">
+            <div class="theme" onclick="startGame('adventure')">Adventure</div>
+            <div class="theme" onclick="startGame('cartoon')">Cartoon</div>
+            <div class="theme" onclick="startGame('fruits')">Fruits</div>
+            <div class="theme" onclick="startGame('animals')">Animals</div>
+            <div class="theme" onclick="startGame('planets')">Planets</div>
+        </div>
+    </section>
+    <div class="game-container">
+        <div class="game-board" id="game-board"></div>
+        <div class="game-info">
+            <div id="score" class="score-timer">Score: 0</div>
+            <div id="timer" class="score-timer">Time: 30s</div>
+        </div>
+        <div class="game-over" id="game-over">
+            <p id="game-over-message"></p>
+            <button class="play-again-btn" onclick="location.reload()">Play Again</button>
+        </div>
+    </div>
+    <script src="script.js">
+    </script>
+</body>
+</html>
